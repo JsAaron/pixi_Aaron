@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<meta charset ="utf-8">
 	<title>pixi.js example 12 Spine</title>
 	<style>
 		body {
@@ -22,6 +23,7 @@
 	// create a new loader
 	loader = new PIXI.AssetLoader(assetsToLoader);
 
+ PIXI.a = false
 
 	// use callback
 	loader.onComplete = function() {
@@ -44,9 +46,13 @@
 
 		stage.addChild(spineBoy);
 
+
 		stage.click = function() {
+			PIXI.a = true
 			spineBoy.state.setAnimationByName("jump", false);
-			spineBoy.state.addAnimationByName("walk", true);
+
+			console.log('walk')
+			// spineBoy.state.addAnimationByName("walk", true);
 
 		}
 
@@ -83,10 +89,21 @@
 
 	requestAnimFrame(animate);
 
-	function animate() {
+	var k = 500
 
-	    requestAnimFrame( animate );
-	    renderer.render(stage);
+	function animate() {
+		// console.log(11)
+		// console.log('stagestagestagestagestagestagestage')
+		requestAnimFrame(animate);
+		renderer.render(stage);
+		if(PIXI.a){
+			if(k==450){
+				renderer.render(stage);
+			}else{
+				renderer.render(stage);
+			}
+			--k
+		}
 	}
 
 	</script>

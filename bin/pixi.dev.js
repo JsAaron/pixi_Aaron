@@ -3799,9 +3799,11 @@
     PIXI.Stage.prototype.updateTransform = function() {
         this.worldAlpha = 1;
 
+
         for (var i = 0, j = this.children.length; i < j; i++) {
             this.children[i].updateTransform();
         }
+
 
         if (this.dirty) {
             this.dirty = false;
@@ -6148,6 +6150,7 @@
         PIXI.WebGLRenderer.updateTextures();
 
         // update the scene graph
+        // 重新场景位置
         stage.updateTransform();
 
 
